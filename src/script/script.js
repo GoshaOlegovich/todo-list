@@ -21,7 +21,7 @@ const todo = () => {
         const el = document.createElement('li');
 
         el.className = 'task__item';
-        el.innerHTML = `<span>${task}</span> <button class='task__btn-remove'>Remove</button>`;
+        el.innerHTML = `<p>${task}</p> <button class='task__btn-edit'>Edit</button> <button class='task__btn-remove'>Remove</button>`;
         tasksList.insertBefore(el, theFirstChild)
 
         form.reset();
@@ -51,6 +51,18 @@ const todo = () => {
         if (currentTask.classList.contains('task__btn-remove')) {
             currentTask.parentNode.parentNode.removeChild(currentTask.parentNode);
         }
+
+        // Edit task 
+
+        if (currentTask.classList.contains('task__btn-edit')) {
+            
+            let eddingTask = currentTask.previousSibling.previousSibling;
+            let newTask = prompt('Edit task')
+            eddingTask.innerHTML = newTask
+           console.log(eddingTask);
+
+      
+        }   
 
     })
 }
