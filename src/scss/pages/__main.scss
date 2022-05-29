@@ -1,0 +1,79 @@
+
+.task {
+    margin: 150px 0;
+
+        &__form {
+            display: flex;
+            justify-content: space-between;
+        }
+		&__input {
+            border-radius: $borderRadius;
+            font-size: 1.6rem;
+            background-color: $inputColor;
+            width: 300px;
+            padding: 12px 24px;
+            margin-right: 48px;
+            &:focus {
+                background-color: $taskColorHover;
+            }
+
+		}
+
+		&__submit {
+            border-radius: $borderRadius;
+            background-color: $btnColor;
+            padding: 12px 24px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+		}
+
+        &__list {
+            display: grid;
+            margin-top: 24px;
+            gap: 24px;
+            
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 50%;
+            padding: 12px 24px;
+            border-radius: $borderRadius;   
+            background-color: $inputColor; 
+            font-size: 1.6rem;
+            cursor: pointer;
+            
+
+           
+            &:hover {
+                background-color: $taskColorHover;
+            }
+        }
+
+        &__done {
+            background-color: $taskDoneColor;
+            text-decoration: line-through;
+        }
+
+        &__btn-remove {
+            width: fit-content;
+            height: 100%;
+            background-color: red;
+        }
+}
+
+.task-archive {
+    background-color: gray;
+
+    .task__item {
+        background-color: gray;
+        text-decoration: none;
+        button {
+            
+            display: none;
+        }
+    }
+}
