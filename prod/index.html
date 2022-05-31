@@ -10,26 +10,48 @@
 </head>
 
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <img src="img/logo.svg" alt="">
+                </div>
+                <button class="header__btn-profile">
+                    <span>Hello, User Name</span><img src="img/user.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </header>
     <div class="task">
-
+    
 
         <div class="container">
 
             <form class="task__form">
                 <input class='task__input' type="text">
-                <input class='task__submit' type="submit">
+                <input class='task__submit' value="Submit" type="submit">
             </form>
 
 
             <ul class="task__list">
-
+                <li class="task__item">
+                    <p>Simple task</p>
+                    <div class="task__control">
+                        <button class="task__btn task__btn-edit">Edit</button> <button class="task__btn task__btn-remove">Remove</button>
+                    </div>
+                </li>
             </ul>
 
-            <ul class="task-archive"></ul>
+            <details class="task-archive">
+                <summary class="task-archive__title">Done Tasks</summary>
+                <ul class="task-archive__container">
+
+                </ul>
+            </details>
         </div>
     </div>
 
-    <script type="text/javascript" src="script/min.js"></script>
+     <script type="text/javascript" src="script/min.js"></script> 
 </body>
 
 </html>

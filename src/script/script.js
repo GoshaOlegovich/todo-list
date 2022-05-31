@@ -5,7 +5,7 @@ const form = document.querySelector('.task__form'),
 
 
 const tasksList = document.querySelector('.task__list'),
-    taskArchive = document.querySelector('.task-archive');
+    taskArchive = document.querySelector('.task-archive__container');
 
 
 const todo = () => {
@@ -21,7 +21,16 @@ const todo = () => {
         const el = document.createElement('li');
 
         el.className = 'task__item';
-        el.innerHTML = `<p>${task}</p> <button class='task__btn-edit'>Edit</button> <button class='task__btn-remove'>Remove</button>`;
+      
+        el.innerHTML = `
+        <p>${task}</p> 
+        <div class="task__control">
+        <button class="task__btn task__btn-edit">Edit</button> 
+        <button class="task__btn task__btn-remove">Remove</button>
+        </div>
+        `
+        
+       
         tasksList.insertBefore(el, theFirstChild)
 
         form.reset();
@@ -49,14 +58,14 @@ const todo = () => {
 
         // Remove task
         if (currentTask.classList.contains('task__btn-remove')) {
-            currentTask.parentNode.parentNode.removeChild(currentTask.parentNode);
+            currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
         }
 
         // Edit task 
 
         if (currentTask.classList.contains('task__btn-edit')) {
             
-            let eddingTask = currentTask.previousSibling.previousSibling;
+            let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
             let newTask = prompt('Edit task')
             eddingTask.innerHTML = newTask
            console.log(eddingTask);
