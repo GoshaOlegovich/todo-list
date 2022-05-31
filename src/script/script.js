@@ -16,24 +16,36 @@ const todo = () => {
     // Add task
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+
         let theFirstChild = tasksList.firstChild;
         let task = input.value;
         const el = document.createElement('li');
-
         el.className = 'task__item';
-      
-        el.innerHTML = `
-        <p>${task}</p> 
-        <div class="task__control">
-        <button class="task__btn task__btn-edit">Edit</button> 
-        <button class="task__btn task__btn-remove">Remove</button>
-        </div>
-        `
-        
-       
-        tasksList.insertBefore(el, theFirstChild)
+
+        if (task === '') {
+            input.classList.add('task__error')
+            console.log('error');
+            
+        } else {
+            input.classList.remove('task__error')
+          
+
+            el.innerHTML = `
+            <p>${task}</p> 
+            <div class="task__control">
+            <button class="task__btn task__btn-edit">Edit</button> 
+            <button class="task__btn task__btn-remove">Remove</button>
+            </div>
+            `
+
+
+            tasksList.insertBefore(el, theFirstChild)
+
+           
+        }
 
         form.reset();
+
     })
 
     // Task done
@@ -43,7 +55,7 @@ const todo = () => {
 
         if (currentTask.classList.contains('task__item')) {
 
-            currentTask.classList.add('task__done'); 
+            currentTask.classList.add('task__done');
 
             currentTask.remove();
 
@@ -64,14 +76,14 @@ const todo = () => {
         // Edit task 
 
         if (currentTask.classList.contains('task__btn-edit')) {
-            
+
             let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
             let newTask = prompt('Edit task')
             eddingTask.innerHTML = newTask
-           console.log(eddingTask);
+            console.log(eddingTask);
 
-      
-        }   
+
+        }
 
     })
 }
