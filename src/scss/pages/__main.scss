@@ -1,5 +1,5 @@
 .task {
-
+   
     &__form {
         display: flex;
         justify-content: space-between;
@@ -17,6 +17,10 @@
             background-color: $taskColorHover;
         }
 
+    }
+
+    &__error {
+        background-color: red!important;
     }
 
     &__submit {
