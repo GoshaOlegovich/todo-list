@@ -32,10 +32,15 @@
             height: 100px;
         }
 
+        &--error {
+            border: 3px solid red;
+        }
+
         &:focus {
             border: 3px solid #55A8F7;
         }
     }
+
     &__checkboxes {
         display: flex;
         gap: 15px;
