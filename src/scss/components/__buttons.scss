@@ -1,0 +1,46 @@
+.task__btn {
+    width: 26.82px;
+    height: 26.82px;
+    border-radius: 50%;
+    background: #FEFEFE;
+    border: 1.91566px solid #D8D8D8;
+}
+
+
+.priority {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 28px;    
+    border-radius: 5px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    &--a {
+        background-color: $PriorityA;
+    }
+    &--b {
+        background-color: $PriorityB;
+    }
+    &--c {
+        background-color: $PriorityC;
+    }
+    &--d {
+        background-color: $PriorityD    ;
+    }
+
+    &--select {
+        border: 4px solid rgb(255, 255, 255) outset;
+    }
+}
+
+
+.new-task-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 52px;
+    margin: 20px auto;
+}

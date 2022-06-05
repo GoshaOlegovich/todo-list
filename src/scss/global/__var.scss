@@ -1,25 +1,19 @@
 // Colors
-    //mains
-    $bgColor: #121A25;
+    // Main UI Colors
+    $UI-Primary : #FFFFFF;
+    $UI-Secondary : #0F2027;
 
-    //components 
-    $inputColor : #1F293A;
-    $taskColorHover: #56B578;
-    $taskDoneColor : #56B578;
+    // Font
+    $FontPrimary : #000000;
+    $FontSecondary : #4B4B4B;
 
-    $btnSubmit : #3A8FED;	
-    $btnEdit: #DB9A37;
-    $btnRemove: #C73F24;
-   
-    //fonts
-    $fontPrimary : #ffff;
+    //Priority Colors
+    $PriorityA : #E67F67;
+    $PriorityB : #6CDA97;
+    $PriorityC : #F3C872;
+    $PriorityD : #F0F0F0;
 
-
-//Forms
-
-    //border
-    $borderRadius: 5px;
-
+// 
 
 // Breakpoints 
 
