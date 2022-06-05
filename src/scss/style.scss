@@ -3,17 +3,15 @@
 @import 'global/_mixin';
 @import 'global/_reset';
 
-// Container
-@import 'components/_container';
-
 // Fonts settings
 @import 'global/_typography';
 
 // Components
-// @import 'components/_header';
+@import 'components/_buttons';
+
+@import 'components/_modal';
 
 
-// Pages
-@import 'components/_header';
-@import 'pages/_main';
+//
 
+@import '_main';

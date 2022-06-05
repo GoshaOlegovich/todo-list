@@ -1,5 +1,31 @@
-*,
-all {
-    font-family: ubuntu;
-    color:  $fontPrimary;
+*, body {
+    font-family: 'Public Sans', sans-serif;
+    color: $FontPrimary;
 }
+
+//
+
+.head-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding: 24px 0;
+}
+
+//Task
+
+.task__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $FontPrimary
+}
+
+
+.task__desc {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: $FontSecondary;
+}
+
+
