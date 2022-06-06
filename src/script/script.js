@@ -1,3 +1,5 @@
+
+
 // Modal 
 const btnNewTask = document.querySelector('.new-task-btn'),
     modal = document.querySelector('.modal');
@@ -16,7 +18,7 @@ const limitClass = document.querySelectorAll('.limit');
 
 
 // Task list
-let taskStorage = [];
+const taskStorage = [];
 
 const tasksList = document.querySelector('.task__list'),
     taskArchive = document.querySelector('.task-archive__container');
@@ -26,6 +28,10 @@ btnNewTask.addEventListener('click', () => modal.style.display = 'block');
 
 
 const taskBtnDone = document.querySelectorAll('.task__btn')
+
+
+
+
 
 const getCheckBoxValue = () => {
     for (i = 0; i < checkBoxes.length; i++) {
@@ -39,13 +45,26 @@ const getCheckBoxValue = () => {
     }
 }
 
-const validationTrue = () => {
+
+
+
+const FormValidation = () => {
+    //Form Validation
+
+    // if (task === '') {
+    //     input.classList.add('modal__input--error')
+    //     console.log('error');
+    // }
+    // if (currentPriority === undefined) {
+    //     checkBoxesContainer.classList.add('modal__checkboxes-- error')
+    //     console.log('Select priority please');
+    // } else {
     input.classList.remove('modal__input--error');
     checkBoxesContainer.classList.remove('modal__checkboxes-- error');
     modal.style.display = 'none';
 }
 
-
+// Create task functuin
 
 
 
@@ -54,6 +73,7 @@ const validationTrue = () => {
 
 const todo = () => {
     textLength.innerHTML = 0
+
     inputDesc.addEventListener('keydown', () => {
         let symbolLength = inputDesc.value.length;
         textLength.innerHTML = 0 + symbolLength;
@@ -70,109 +90,74 @@ const todo = () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        FormValidation();
+
+        // Form inputs
 
 
 
 
-
-
-        //Form Validation
-
-        // if (task === '') {
-        //     input.classList.add('modal__input--error')
-        //     console.log('error');
-        // }
-        // if (currentPriority === undefined) {
-        //     checkBoxesContainer.classList.add('modal__checkboxes-- error')
-        //     console.log('Select priority please');
-        // } else {
-
-
-        validationTrue();
-
-
-
+        // Create task El
         let task = input.value;
         let taskDesc = inputDesc.value;
         let currentPriority = getCheckBoxValue();
 
-        class Tasks {
-
-            render() {
+        class CreateTask {
+            render(val) {
                 const el = document.createElement('li');
                 el.className = 'task__item';
                 el.innerHTML = `
                 <div class="task__head">
-                <input class="task__btn" type="radio" id="done-task"> 
-                <label class="task__btn--label" for="done-task"></label>
+                <input class="task__btn" type="radio" id="done-task-${val}"> 
+                <label class="task__btn--label" for="done-task-${val}"></label>
                 <h4 class="task__title">${task}</h4>
                 <span class="priority priority--${currentPriority}">${currentPriority}</span>
                 </div>
-                <p class="task__desc">${taskDesc}</p>`
+                <p class="task__desc">${taskDesc}</p>`;
+                taskStorage.push(el);
+                tasksList.appendChild(el);
 
-               
-                tasksList.appendChild(el)
+
             }
         }
 
 
-        
-        const tasks = new Tasks();
-        tasks.render();
+        let index = 1;
+        const elEnumeratio = () => {
+            for (i = 0; i < taskStorage.length; i++) {
+                console.log(index + 'in circle');
+                index++;
+            }
+
+        }
+        elEnumeratio();
 
 
 
 
+
+        const createTask = new CreateTask();
+
+        createTask.render(index);
+
+        console.log(taskStorage.length + " taskStorage");
+        console.log(index + " index");
+
+
+
+
+
+
+        // Func end
 
         form.reset();
-        // }
+
 
 
 
     })
 
-    // Task done
 
-    // tasksList.addEventListener('click', (e) => {
-    //     let currentTask = e.target;
-
-    //     console.log(currentTask);
-    //     if (currentTask.classList.contains('task__btn')) {
-
-
-    //         currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
-
-
-
-
-    //         // Move to archive
-    //         // let clone = currentTask.cloneNode(true);
-    //         // taskArchive.appendChild(clone);
-
-
-
-
-    //     }
-
-
-    // // Remove task
-    // if (currentTask.classList.contains('task__btn-remove')) {
-    //     currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
-    // }
-
-    // // Edit task 
-
-    // if (currentTask.classList.contains('task__btn-edit')) {
-
-    //     let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
-    //     let newTask = prompt('Edit task')
-    //     eddingTask.innerHTML = newTask
-    //     console.log(eddingTask);
-
-
-    // }
-
-    //  })
 }
 
 
