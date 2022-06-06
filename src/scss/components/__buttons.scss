@@ -1,10 +1,39 @@
 .task__btn {
-    width: 26.82px;
-    height: 26.82px;
-    border-radius: 50%;
-    background: #FEFEFE;
-    border: 1.91566px solid #D8D8D8;
+    display: none;
+    &--label {
+        position: relative;
+        border: 1px solid gray;
+        padding: 12px;
+        border-radius: 50%;
+        position: relative;
+    }
+    input[type="radio"]:checked + &--label {
+        border: 1px solid $PriorityB;
+        &::before {
+            position: absolute;
+            content: '';
+            padding: 0px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $PriorityB;
+            animation-name: done-task;
+            animation-duration: .3s;
+            animation-fill-mode: forwards;
+        }
+        
+    }
 }
+@keyframes done-task {
+    from {
+        padding: 0;
+    }
+    to {
+        padding: 8px;
+    }
+}
+
 
 
 .priority {
@@ -13,21 +42,25 @@
     align-items: center;
     justify-content: center;
     width: 25px;
-    height: 28px;    
+    height: 28px;
     border-radius: 5px;
     font-size: 1.5rem;
     text-transform: uppercase;
+
     &--a {
         background-color: $PriorityA;
     }
+
     &--b {
         background-color: $PriorityB;
     }
+
     &--c {
         background-color: $PriorityC;
     }
+
     &--d {
-        background-color: $PriorityD    ;
+        background-color: $PriorityD;
     }
 
     &--select {

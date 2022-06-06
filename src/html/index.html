@@ -31,10 +31,17 @@
 
                     <label>Task priority</label>
                     <div class="modal__checkboxes">
-                        <input class="checkbox-proprity priority priority--a" type="radio" name="priority" value="a">
-                        <input class="checkbox-proprity priority priority--b" type="radio" name="priority" value="b">
-                        <input class="checkbox-proprity priority priority--c" type="radio" name="priority" value="c">
-                        <input class="checkbox-proprity priority priority--d" type="radio" name="priority" value="d">
+                        <input class="checkbox-proprity" type="radio" id="priority-a" value="a" name="select-priority">
+                        <label class="priority-label priority priority--a" for="priority-a">A</label>
+
+                        <input class="checkbox-proprity" type="radio" id="priority-b" value="b" name="select-priority">
+                        <label class="priority-label priority priority--b" for="priority-b">B</label>
+
+                        <input class="checkbox-proprity" type="radio" id="priority-c" value="c" name="select-priority">
+                        <label class="priority-label priority priority--c" for="priority-c">C</label>
+
+                        <input class="checkbox-proprity" type="radio" id="priority-d" value="d" name="select-priority">
+                        <label class="priority-label priority priority--d" for="priority-d">D</label>
                     </div>
                 </div>
                 <input class='modal__submit' value="Submit" type="submit">
@@ -56,7 +63,8 @@
 
                 <li class="task__item">
                     <div class="task__head">
-                        <button class="task__btn"></button>
+                        <input class="task__btn" type="radio" id="done-task"> 
+                        <label class="task__btn--label" for="done-task"></label>
                         <h4 class="task__title">Default task</h4>
                         <span class="priority priority--a">a</span>
                     </div>
@@ -64,6 +72,38 @@
                         tellus, et varius lacus molestie a orci aliquam.</p>
                 </li>
 
+                <li class="task__item">
+                    <div class="task__head">
+                        <input class="task__btn" type="radio" id="done-task"> 
+                        <label class="task__btn--label" for="done-task"></label>
+                        <h4 class="task__title">Default task</h4>
+                        <span class="priority priority--a">a</span>
+                    </div>
+                    <p class="task__desc">Fusce eu massa sed metus maximus tincidunt. Curabitur pretium venenatis
+                        tellus, et varius lacus molestie a orci aliquam.</p>
+                </li>
+
+                <li class="task__item">
+                    <div class="task__head">
+                        <input class="task__btn" type="radio" id="done-task"> 
+                        <label class="task__btn--label" for="done-task"></label>
+                        <h4 class="task__title">Default task</h4>
+                        <span class="priority priority--a">a</span>
+                    </div>
+                    <p class="task__desc">Fusce eu massa sed metus maximus tincidunt. Curabitur pretium venenatis
+                        tellus, et varius lacus molestie a orci aliquam.</p>
+                </li>
+
+                <li class="task__item">
+                    <div class="task__head">
+                        <input class="task__btn" type="radio" id="done-task"> 
+                        <label class="task__btn--label" for="done-task"></label>
+                        <h4 class="task__title">Default task</h4>
+                        <span class="priority priority--a">a</span>
+                    </div>
+                    <p class="task__desc">Fusce eu massa sed metus maximus tincidunt. Curabitur pretium venenatis
+                        tellus, et varius lacus molestie a orci aliquam.</p>
+                </li>
 
 
             </ul>

@@ -42,7 +42,7 @@ const getCheckBoxValue = () => {
 
 
 const todo = () => {
-    textLength.innerHTML = 0 
+    textLength.innerHTML = 0
     inputDesc.addEventListener('keydown', () => {
         let symbolLength = inputDesc.value.length;
         textLength.innerHTML = 0 + symbolLength;
@@ -56,37 +56,38 @@ const todo = () => {
 
     // Add task
     form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const el = document.createElement('li');
-            el.className = 'task__item';
-            let theFirstChild = tasksList.firstChild;
-            let task = input.value;
-            let taskDesc = inputDesc.value;
-            let currentPriority = getCheckBoxValue();
+        e.preventDefault();
+        const el = document.createElement('li');
+        el.className = 'task__item';
+        let theFirstChild = tasksList.firstChild;
 
-            //Form Validation
-           
-             
-            
-          
-            if (task === '') {
-                input.classList.add('modal__input--error')
-                console.log('error');
-            }
-            if (currentPriority === undefined) {
-                checkBoxesContainer.classList.add('modal__checkboxes-- error')
-                console.log('Select priority please');
-            }
+        // Inputs
+        let task = input.value;
+        let taskDesc = inputDesc.value;
+        let currentPriority = getCheckBoxValue();
+
+        
+        //Form Validation
 
 
-            else {
+
+
+        if (task === '') {
+            input.classList.add('modal__input--error')
+            console.log('error');
+        }
+        if (currentPriority === undefined) {
+            checkBoxesContainer.classList.add('modal__checkboxes-- error')
+            console.log('Select priority please');
+        } else {
             input.classList.remove('modal__input--error');
             checkBoxesContainer.classList.remove('modal__checkboxes-- error');
 
             el.innerHTML = `
           
             <div class="task__head">
-                <button class="task__btn"></button>
+            <input class="task__btn" type="radio" id="done-task"> 
+            <label class="task__btn--label" for="done-task"></label>
                 <h4 class="task__title">${task}</h4>
                 <span class="priority priority--${currentPriority}">${currentPriority}</span>
             </div>
@@ -104,46 +105,48 @@ const todo = () => {
 
     })
 
-// Task done
+    // Task done
 
-tasksList.addEventListener('click', (e) => {
-    let currentTask = e.target;
+    tasksList.addEventListener('click', (e) => {
+        let currentTask = e.target;
 
-
-    if (currentTask.classList.contains('task__item')) {
-
-        currentTask.classList.add('task__done');
-
-        currentTask.remove();
-
-        // Move to archive
-        let clone = currentTask.cloneNode(true);
-        taskArchive.appendChild(clone);
+        console.log(currentTask);
+        if (currentTask.classList.contains('task__btn')) {
 
 
+            currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
+
+           
 
 
-    }
+            // Move to archive
+            // let clone = currentTask.cloneNode(true);
+            // taskArchive.appendChild(clone);
 
 
-    // // Remove task
-    // if (currentTask.classList.contains('task__btn-remove')) {
-    //     currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
-    // }
-
-    // // Edit task 
-
-    // if (currentTask.classList.contains('task__btn-edit')) {
-
-    //     let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
-    //     let newTask = prompt('Edit task')
-    //     eddingTask.innerHTML = newTask
-    //     console.log(eddingTask);
 
 
-    // }
+        }
 
-})
+
+        // // Remove task
+        // if (currentTask.classList.contains('task__btn-remove')) {
+        //     currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
+        // }
+
+        // // Edit task 
+
+        // if (currentTask.classList.contains('task__btn-edit')) {
+
+        //     let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
+        //     let newTask = prompt('Edit task')
+        //     eddingTask.innerHTML = newTask
+        //     console.log(eddingTask);
+
+
+        // }
+
+    })
 }
 
 
