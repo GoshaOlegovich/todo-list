@@ -1,4 +1,5 @@
-*, html {
+*,
+html {
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
     font-size: 62.5%; // 10px
@@ -9,7 +10,11 @@ body {
     padding: 0;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
     margin: 0;
     padding: 0;
 }
@@ -39,6 +44,7 @@ input {
     outline: none;
 
 }
+
 
 textarea {
     outline: none;
