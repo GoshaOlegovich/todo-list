@@ -19,19 +19,25 @@
                 </div>
 
                 <div class="modal__section">
-                    <label for="task-desc">Task description</label>
+                    <div class="modal__desc-counter">
+                        <label for="task-desc">Task description</label> 
+                        <div class="modal__counter">
+                            <span class="limit text-length"></span><span class="limit">/</span><span class="limit">120</span>
+                        </div>
+                       
+                    </div>
+                    
                     <textarea class='modal__input modal__input--textarea' id="task-desc"></textarea>
                 </div>
 
                 <div class="modal__section">
-                    
+
                     <label>Task priority</label>
                     <div class="modal__checkboxes">
-                        <span data-priority='a' class="priority priority--a priority--select">a</span>
-                        <span data-priority='b' class="priority priority--b">b</span>
-                        <span data-priority='c' class="priority priority--c">c</span>
-                        <span data-priority='d' class="priority priority--d">d</span>
-                       
+                        <input class="checkbox-proprity priority priority--a" type="radio" name="priority" value="a">
+                        <input class="checkbox-proprity priority priority--b" type="radio" name="priority" value="b">
+                        <input class="checkbox-proprity priority priority--c" type="radio" name="priority" value="c">
+                        <input class="checkbox-proprity priority priority--d" type="radio" name="priority" value="d">
                     </div>
                 </div>
                 <input class='modal__submit' value="Submit" type="submit">
@@ -61,8 +67,8 @@
                         tellus, et varius lacus molestie a orci aliquam.</p>
                 </li>
 
-               
-              
+
+
             </ul>
         </div>
     </div>
