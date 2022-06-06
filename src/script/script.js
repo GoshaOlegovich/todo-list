@@ -16,6 +16,8 @@ const limitClass = document.querySelectorAll('.limit');
 
 
 // Task list
+let taskStorage = [];
+
 const tasksList = document.querySelector('.task__list'),
     taskArchive = document.querySelector('.task-archive__container');
 
@@ -37,6 +39,15 @@ const getCheckBoxValue = () => {
     }
 }
 
+const validationTrue = () => {
+    input.classList.remove('modal__input--error');
+    checkBoxesContainer.classList.remove('modal__checkboxes-- error');
+    modal.style.display = 'none';
+}
+
+
+
+
 
 
 
@@ -54,99 +65,114 @@ const todo = () => {
         }
     })
 
-    // Add task
+    //Form
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const el = document.createElement('li');
-        el.className = 'task__item';
-        let theFirstChild = tasksList.firstChild;
 
-        // Inputs
+
+
+
+
+
+
+        //Form Validation
+
+        // if (task === '') {
+        //     input.classList.add('modal__input--error')
+        //     console.log('error');
+        // }
+        // if (currentPriority === undefined) {
+        //     checkBoxesContainer.classList.add('modal__checkboxes-- error')
+        //     console.log('Select priority please');
+        // } else {
+
+
+        validationTrue();
+
+
+
         let task = input.value;
         let taskDesc = inputDesc.value;
         let currentPriority = getCheckBoxValue();
 
-        
-        //Form Validation
+        class Tasks {
 
-
-
-
-        if (task === '') {
-            input.classList.add('modal__input--error')
-            console.log('error');
-        }
-        if (currentPriority === undefined) {
-            checkBoxesContainer.classList.add('modal__checkboxes-- error')
-            console.log('Select priority please');
-        } else {
-            input.classList.remove('modal__input--error');
-            checkBoxesContainer.classList.remove('modal__checkboxes-- error');
-
-            el.innerHTML = `
-          
-            <div class="task__head">
-            <input class="task__btn" type="radio" id="done-task"> 
-            <label class="task__btn--label" for="done-task"></label>
+            render() {
+                const el = document.createElement('li');
+                el.className = 'task__item';
+                el.innerHTML = `
+                <div class="task__head">
+                <input class="task__btn" type="radio" id="done-task"> 
+                <label class="task__btn--label" for="done-task"></label>
                 <h4 class="task__title">${task}</h4>
                 <span class="priority priority--${currentPriority}">${currentPriority}</span>
-            </div>
-            <p class="task__desc">${taskDesc}</p>
-            
-             `
+                </div>
+                <p class="task__desc">${taskDesc}</p>`
 
-
-            tasksList.insertBefore(el, theFirstChild)
-            modal.style.display = 'none';
-
+               
+                tasksList.appendChild(el)
+            }
         }
 
+
+        
+        const tasks = new Tasks();
+        tasks.render();
+
+
+
+
+
         form.reset();
+        // }
+
+
 
     })
 
     // Task done
 
-    tasksList.addEventListener('click', (e) => {
-        let currentTask = e.target;
+    // tasksList.addEventListener('click', (e) => {
+    //     let currentTask = e.target;
 
-        console.log(currentTask);
-        if (currentTask.classList.contains('task__btn')) {
-
-
-            currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
-
-           
+    //     console.log(currentTask);
+    //     if (currentTask.classList.contains('task__btn')) {
 
 
-            // Move to archive
-            // let clone = currentTask.cloneNode(true);
-            // taskArchive.appendChild(clone);
+    //         currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
 
 
 
 
-        }
+    //         // Move to archive
+    //         // let clone = currentTask.cloneNode(true);
+    //         // taskArchive.appendChild(clone);
 
 
-        // // Remove task
-        // if (currentTask.classList.contains('task__btn-remove')) {
-        //     currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
-        // }
-
-        // // Edit task 
-
-        // if (currentTask.classList.contains('task__btn-edit')) {
-
-        //     let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
-        //     let newTask = prompt('Edit task')
-        //     eddingTask.innerHTML = newTask
-        //     console.log(eddingTask);
 
 
-        // }
+    //     }
 
-    })
+
+    // // Remove task
+    // if (currentTask.classList.contains('task__btn-remove')) {
+    //     currentTask.parentNode.parentNode.parentNode.removeChild(currentTask.parentNode.parentNode);
+    // }
+
+    // // Edit task 
+
+    // if (currentTask.classList.contains('task__btn-edit')) {
+
+    //     let eddingTask = currentTask.parentNode.previousSibling.previousSibling;
+    //     let newTask = prompt('Edit task')
+    //     eddingTask.innerHTML = newTask
+    //     console.log(eddingTask);
+
+
+    // }
+
+    //  })
 }
 
 
