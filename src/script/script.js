@@ -1,5 +1,3 @@
-
-
 // Modal 
 const btnNewTask = document.querySelector('.new-task-btn'),
     modal = document.querySelector('.modal');
@@ -48,23 +46,11 @@ const getCheckBoxValue = () => {
 
 
 
-const FormValidation = () => {
-    //Form Validation
 
-    // if (task === '') {
-    //     input.classList.add('modal__input--error')
-    //     console.log('error');
-    // }
-    // if (currentPriority === undefined) {
-    //     checkBoxesContainer.classList.add('modal__checkboxes-- error')
-    //     console.log('Select priority please');
-    // } else {
-    input.classList.remove('modal__input--error');
-    checkBoxesContainer.classList.remove('modal__checkboxes-- error');
-    modal.style.display = 'none';
-}
 
-// Create task functuin
+
+
+
 
 
 
@@ -74,39 +60,61 @@ const FormValidation = () => {
 const todo = () => {
     textLength.innerHTML = 0
 
-    inputDesc.addEventListener('keydown', () => {
+
+    inputDesc.addEventListener('keydown', symbolLengthFunc = () => {
         let symbolLength = inputDesc.value.length;
         textLength.innerHTML = 0 + symbolLength;
 
-        if (symbolLength >= 4) {
+        if (symbolLength > 120) {
             for (i = 0; i < limitClass.length; i++) {
                 limitClass[i].style.color = 'red';
             }
+        } else {
+            for (i = 0; i < limitClass.length; i++) {
+                limitClass[i].style.color = 'black';
+            }
+
         }
+        return symbolLength;
     })
 
-    //Form
+    //Form 
+
+
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        FormValidation();
-
-        // Form inputs
-
-
-
-
-        // Create task El
-        let task = input.value;
-        let taskDesc = inputDesc.value;
         let currentPriority = getCheckBoxValue();
+        let symbolLengthOut = symbolLengthFunc();
 
-        class CreateTask {
-            render(val) {
-                const el = document.createElement('li');
-                el.className = 'task__item';
-                el.innerHTML = `
+
+        const FormValidation = () => {
+            if (input.value === '') {
+               
+                input.classList.add('modal__input--error');
+            }
+            else if (currentPriority === undefined) {
+             
+                checkBoxesContainer.classList.add('modal__checkboxes-- error');
+            }
+            else if (symbolLengthOut > 120) {
+               
+            } else {
+                
+                input.classList.remove('modal__input--error');
+                checkBoxesContainer.classList.remove('modal__checkboxes-- error');
+                modal.style.display = 'none';
+
+                // Create task El
+                let task = input.value;
+                let taskDesc = inputDesc.value;
+
+                class CreateTask {
+                    render(val) {
+                        const el = document.createElement('li');
+                        el.className = 'task__item';
+                        el.innerHTML = `
                 <div class="task__head">
                 <input class="task__btn" type="radio" id="done-task-${val}"> 
                 <label class="task__btn--label" for="done-task-${val}"></label>
@@ -114,46 +122,29 @@ const todo = () => {
                 <span class="priority priority--${currentPriority}">${currentPriority}</span>
                 </div>
                 <p class="task__desc">${taskDesc}</p>`;
-                taskStorage.push(el);
-                tasksList.appendChild(el);
+                        taskStorage.push(el);
+                        tasksList.appendChild(el);
 
 
+                    }
+                }
+                let index = 1;
+                const elEnumeratio = () => {
+                    for (i = 0; i < taskStorage.length; i++) {
+                        index++;
+                    }
+
+                }
+                elEnumeratio();
+                const createTask = new CreateTask();
+                createTask.render(index);
+                form.reset();
             }
+
+
         }
 
-
-        let index = 1;
-        const elEnumeratio = () => {
-            for (i = 0; i < taskStorage.length; i++) {
-                console.log(index + 'in circle');
-                index++;
-            }
-
-        }
-        elEnumeratio();
-
-
-
-
-
-        const createTask = new CreateTask();
-
-        createTask.render(index);
-
-        console.log(taskStorage.length + " taskStorage");
-        console.log(index + " index");
-
-
-
-
-
-
-        // Func end
-
-        form.reset();
-
-
-
+        FormValidation();
 
     })
 
