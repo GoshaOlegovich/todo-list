@@ -63,7 +63,7 @@ const todo = () => {
 
     inputDesc.addEventListener('keydown', symbolLengthFunc = () => {
         let symbolLength = inputDesc.value.length;
-        textLength.innerHTML = 0 + symbolLength;
+        textLength.innerHTML = 0 + symbolLength + 1;
 
         if (symbolLength > 120) {
             for (i = 0; i < limitClass.length; i++) {
@@ -91,17 +91,15 @@ const todo = () => {
 
         const FormValidation = () => {
             if (input.value === '') {
-               
+
                 input.classList.add('modal__input--error');
-            }
-            else if (currentPriority === undefined) {
-             
+            } else if (currentPriority === undefined) {
+
                 checkBoxesContainer.classList.add('modal__checkboxes-- error');
-            }
-            else if (symbolLengthOut > 120) {
-               
+            } else if (symbolLengthOut > 120) {
+
             } else {
-                
+                textLength.innerHTML = 0 
                 input.classList.remove('modal__input--error');
                 checkBoxesContainer.classList.remove('modal__checkboxes-- error');
                 modal.style.display = 'none';
@@ -114,10 +112,11 @@ const todo = () => {
                     render(val) {
                         const el = document.createElement('li');
                         el.className = 'task__item';
+                        el.setAttribute('data-index', val)
                         el.innerHTML = `
                 <div class="task__head">
                 <input class="task__btn" type="radio" id="done-task-${val}"> 
-                <label class="task__btn--label" for="done-task-${val}"></label>
+                <label class="task__btn--label" for="done-task-${val}" data-index=${val}></label>
                 <h4 class="task__title">${task}</h4>
                 <span class="priority priority--${currentPriority}">${currentPriority}</span>
                 </div>
@@ -128,7 +127,7 @@ const todo = () => {
 
                     }
                 }
-                let index = 1;
+                let index = 0;
                 const elEnumeratio = () => {
                     for (i = 0; i < taskStorage.length; i++) {
                         index++;
@@ -146,6 +145,12 @@ const todo = () => {
 
         FormValidation();
 
+        //  task done
+
+       
+
+
+
     })
 
 
@@ -153,3 +158,19 @@ const todo = () => {
 
 
 todo()
+
+
+
+
+    tasksList.addEventListener('click', (e) => {
+        let currentTask = e.target;
+        let currentTaskIndex = currentTask.dataset.index;
+        console.log(currentTask + currentTaskIndex);
+        for (i = 0; i < taskStorage.length; i++) {
+            setTimeout(() => {
+                taskStorage[currentTaskIndex].remove();
+            }, 500);
+           
+        }
+        
+    })
