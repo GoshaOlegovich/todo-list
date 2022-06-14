@@ -35,7 +35,7 @@ function minJs() {
     return gulp.src(['src/script/*.js'])
     .pipe(uglify())
     .pipe(concat('min.js'))
-    .pipe(gulp.dest('./prod/script'))
+    .pipe(gulp.dest('./script'))
     .pipe(browserSync.stream());
 }
 
@@ -46,7 +46,7 @@ function include() {
             prefix: '@@',
             basepath: '@file'
         }))
-        .pipe(gulp.dest('./prod'))
+        .pipe(gulp.dest('.'))
         .pipe(browserSync.stream());
 }
 
@@ -56,7 +56,7 @@ function include() {
 function PostStyle() {
     return gulp.src('./dest/css/*.css')
         .pipe(postcss(plugins))
-        .pipe(gulp.dest('./prod/src/css'))
+        .pipe(gulp.dest('./css'))
         .pipe(browserSync.stream());
 }
 
@@ -66,7 +66,7 @@ function style() {
     return gulp.src('src/scss/style.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(plugins))
-        .pipe(gulp.dest('./prod/src/css'))
+        .pipe(gulp.dest('./css'))
         .pipe(browserSync.stream());
 }
 
@@ -79,7 +79,7 @@ function minImg() {
             sigFile: 'images/.tinypng-sigs',
             log: true
         }))
-        .pipe(gulp.dest('./prod/img'));
+        .pipe(gulp.dest('./img'));
 }
 
 
@@ -89,7 +89,7 @@ function minImg() {
 function watch() {
     browserSync.init({
         server: {
-            baseDir: "prod"
+            baseDir: "./"
         }
     });
     gulp.watch("src/scss/**/*.scss", style)
